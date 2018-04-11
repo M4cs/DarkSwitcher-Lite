@@ -12,7 +12,7 @@ CGFloat fadeDuration = 0.3f;
     %orig;
     if (switcherView == nil){
       switcherView = self;
-      switcherView.backgroundColor = [UIColor blackColor];
+      switcherView.backgroundColor = [UIColor blackColor]; // here we define our color
     }
     switcherView.alpha = 0.0f;
     [UIView animateWithDuration:fadeDuration
