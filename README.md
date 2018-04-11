@@ -6,5 +6,6 @@ ___
 ___
 - While moving cards it fades again.
 ___
-### Changing colors
+### Pull Request
 ___
+- Please add a pull request if you know any fixes possible!

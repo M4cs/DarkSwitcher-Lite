@@ -1,9 +1,12 @@
 @interface SBAppSwitcherScrollView: UIScrollView
 @end
 
+// define our view
 SBAppSwitcherScrollView *switcherView = nil;
+// define our fade duration using a double
 CGFloat fadeDuration = 0.3f;
 
+//hooking our class from BSUIScrollView which is a subclass of UIScrollView
 %hook SBAppSwitcherScrollView
 -(void)layoutSubviews{
     %orig;
@@ -20,7 +23,9 @@ CGFloat fadeDuration = 0.3f;
 }
 %end
 
+//hooking the app switcher view controller for methods of closing
 %hook SBDeckSwitcherViewController
+//created fade for tapping outside a card
 -(void)_handleDismissTapGesture:(id)arg1{
   %orig;
   [UIView animateWithDuration:fadeDuration
@@ -30,6 +35,7 @@ CGFloat fadeDuration = 0.3f;
   ];
 }
 
+//creates fade when leaving app switcher
 - (void)willMoveToParentViewController:(id)arg1{
   %orig;
   dispatch_async(dispatch_get_main_queue(), ^(void){
@@ -41,6 +47,7 @@ CGFloat fadeDuration = 0.3f;
   });
 }
 
+//creates fade for when you press home button
 -(bool)handleHomeButtonSinglePressUp{
   dispatch_async(dispatch_get_main_queue(), ^(void){
     [UIView animateWithDuration:fadeDuration
